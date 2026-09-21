@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Menú | Cantina La Emilia</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #ffffff;
+            color: #111111;
+            min-height: 100vh;
+        }
+
+        .contenedor {
+            width: 100%;
+            max-width: 850px;
+            margin: auto;
+            padding: 25px 18px 40px;
+        }
+
+        /* ENCABEZADO */
+
+        .encabezado {
+            text-align: center;
+            padding-bottom: 25px;
+        }
+
+        .logo {
+            width: 100%;
+            max-width: 430px;
+            height: auto;
+            margin: 0 auto 15px;
+        }
+
+        .subtitulo {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            letter-spacing: 3px;
+            color: #555555;
+            margin-top: 5px;
+        }
+
+        .linea {
+            width: 65px;
+            height: 2px;
+            background: #111111;
+            margin: 22px auto 30px;
+        }
+
+
+        /* GRID PRINCIPAL */
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+
+        /* CATEGORÍAS */
+
+        .categoria {
+            border: 1px solid #e2e2e2;
+            border-radius: 14px;
+            padding: 20px 18px;
+            background: #ffffff;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+        }
+
+        .categoria h2 {
+            font-size: 23px;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #d8d8d8;
+        }
+
+        .categoria h2::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: #111111;
+            margin-top: 7px;
+        }
+
+
+        /* PRODUCTOS */
+
+        .lista {
+            list-style: none;
+        }
+
+        .lista li {
+            font-size: 16px;
+            line-height: 1.45;
+            padding: 2px 0;
+        }
+
+        .nota {
+            margin-top: 12px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #555555;
+        }
+
+
+        /* SANDWICHES */
+
+        .sandwich {
+            margin-bottom: 14px;
+        }
+
+        .sandwich-nombre {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .sandwich-detalle {
+            font-size: 13px;
+            color: #555555;
+            margin-top: 3px;
+            line-height: 1.35;
+        }
+
+
+        /* SALSAS */
+
+        .salsas {
+            columns: 2;
+            column-gap: 20px;
+        }
+
+
+        /* PIZZAS */
+
+        .pizza-lista {
+            columns: 2;
+            column-gap: 25px;
+        }
+
+
+        /* PLATOS ELABORADOS */
+
+        .plato {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+
+        /* REPARTO */
+
+        .reparto {
+            margin-top: 25px;
+            padding: 22px 18px;
+
+            background: #111111;
+            color: #ffffff;
+
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .reparto h2 {
+            font-size: 20px;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .reparto p {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #eeeeee;
+        }
+
+
+        /* BOTÓN VOLVER */
+
+        .volver {
+            display: block;
+
+            margin: 30px auto 0;
+            padding: 15px 20px;
+
+            max-width: 350px;
+
+            text-align: center;
+
+            background: #ffffff;
+            color: #111111;
+
+            border: 1px solid #cccccc;
+            border-radius: 12px;
+
+            text-decoration: none;
+
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+
+            transition: 0.25s;
+        }
+
+        .volver:hover {
+            background: #111111;
+            color: #ffffff;
+        }
+
+
+        /* PIE */
+
+        .separador {
+            width: 100%;
+            height: 1px;
+            background: #eeeeee;
+            margin: 40px 0 25px;
+        }
+
+        .logo-on {
+            display: block;
+            width: 85px;
+            margin: auto;
+        }
+
+        .pie {
+            text-align: center;
+            margin-top: 12px;
+
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 10px;
+            color: #999999;
+            letter-spacing: 1px;
+        }
+
+
+        /* CELULAR */
+
+        @media (max-width: 650px) {
+
+            .contenedor {
+                padding: 20px 14px 35px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .categoria {
+                padding: 18px 16px;
+            }
+
+            .categoria h2 {
+                font-size: 21px;
+            }
+
+            .lista li {
+                font-size: 15px;
+            }
+
+            .salsas,
+            .pizza-lista {
+                columns: 2;
+            }
+        }
+
+
+        /* CELULARES PEQUEÑOS */
+
+        @media (max-width: 380px) {
+
+            .salsas,
+            .pizza-lista {
+                columns: 1;
+            }
+
+            .categoria h2 {
+                font-size: 20px;
+            }
+
+            .lista li {
+                font-size: 14px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="contenedor">
+
+
+    <!-- ENCABEZADO -->
+
+    <header class="encabezado">
+
+        <img
+            src="MANJARES.png"
+            alt="Cantina La Emilia - By Manjares Emilianos"
+            class="logo"
+        >
+
+        <div class="subtitulo">
+            COMIDAS PARA LLEVAR · DELIVERY
+        </div>
+
+        <div class="linea"></div>
+
+    </header>
+
+
+
+    <!-- MENÚ -->
+
+    <main class="menu-grid">
+
+
+        <!-- EMPANADAS -->
+
+        <section class="categoria">
+
+            <h2>EMPANADAS</h2>
+
+            <ul class="lista">
+
+                <li>Carne salada</li>
+                <li>Carne dulce</li>
+                <li>Carne a cuchillo</li>
+                <li>Pollo</li>
+                <li>Jamón y queso</li>
+                <li>Verdura y queso</li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- MINUTAS -->
+
+        <section class="categoria">
+
+            <h2>MINUTAS</h2>
+
+            <ul class="lista">
+
+                <li>Papas fritas</li>
+                <li>Papas con cheddar, panceta y verdeo</li>
+                <li>Milanesa con papas</li>
+                <li>Milanesa napolitana con papas</li>
+                <li>Suprema con papas</li>
+                <li>Suprema napolitana con papas</li>
+                <li>Tortilla de papas</li>
+                <li>Omelette de jamón y queso</li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- PASTAS -->
+
+        <section class="categoria">
+
+            <h2>PASTAS</h2>
+
+            <ul class="lista">
+
+                <li>Ravioles de verdura</li>
+                <li>Sorrentinos de jamón, ricota y nuez</li>
+                <li>Canelones de verdura</li>
+                <li>Tallarines</li>
+                <li>Ñoquis</li>
+                <li>Lasagna (consultar)</li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- SALSAS -->
+
+        <section class="categoria">
+
+            <h2>SALSAS</h2>
+
+            <ul class="lista salsas">
+
+                <li>Filetto</li>
+                <li>Bolognesa</li>
+                <li>Mixta</li>
+                <li>Blanca</li>
+                <li>4 quesos</li>
+                <li>Parissiene</li>
+                <li>Estofado</li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- SANDWICHES -->
+
+        <section class="categoria">
+
+            <h2>SANDWICHES</h2>
+
+
+            <div class="sandwich">
+
+                <div class="sandwich-nombre">
+                    Hamburguesa
+                </div>
+
+                <div class="sandwich-detalle">
+                    Simple / Completo
+                    <br>
+                    Completo: jamón, queso, lechuga y tomate
+                </div>
+
+            </div>
+
+
+            <div class="sandwich">
+
+                <div class="sandwich-nombre">
+                    Milanesa
+                </div>
+
+                <div class="sandwich-detalle">
+                    Simple / Completo
+                    <br>
+                    Completo: jamón, queso, lechuga y tomate
+                </div>
+
+            </div>
+
+
+            <div class="sandwich">
+
+                <div class="sandwich-nombre">
+                    Lomito
+                </div>
+
+                <div class="sandwich-detalle">
+                    Simple / Completo
+                    <br>
+                    Jamón, queso, lechuga y tomate
+                </div>
+
+            </div>
+
+
+            <div class="sandwich">
+
+                <div class="sandwich-nombre">
+                    Carlitos
+                </div>
+
+            </div>
+
+
+            <div class="sandwich">
+
+                <div class="sandwich-nombre">
+                    Tostados
+                </div>
+
+            </div>
+
+
+            <div class="nota">
+                SUPER: jamón, queso, lechuga, tomate y huevo frito.
+                <br><br>
+                MANJAR: cebolla crispy, panceta, queso cheddar,
+                barbacoa y huevo frito.
+                <br><br>
+                TODOS SALEN CON PAPAS FRITAS.
+            </div>
+
+        </section>
+
+
+
+        <!-- PIZZAS -->
+
+        <section class="categoria">
+
+            <h2>PIZZAS · 4 U 8 PORCIONES</h2>
+
+            <ul class="lista pizza-lista">
+
+                <li>Muzzarella</li>
+                <li>Especial</li>
+                <li>Napolitana</li>
+                <li>Palmitos</li>
+                <li>Rúcula</li>
+                <li>Fugazza</li>
+
+                <li>Calabresa</li>
+                <li>Roquefort</li>
+                <li>Pollo</li>
+                <li>Cuatro quesos</li>
+                <li>Ananá</li>
+                <li>Champiñones</li>
+                <li>Capresse</li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- PLATOS ELABORADOS -->
+
+        <section class="categoria">
+
+            <h2>PLATOS ELABORADOS</h2>
+
+            <div class="plato">• BIFE DE CHORIZO PIZZAROLLA</div>
+            <div class="plato">• POLLO RELLENO</div>
+            <div class="plato">• POLLOS Y LOMOS</div>
+            <div class="plato">Champiñón</div>
+            <div class="plato">Pimienta</div>
+            <div class="plato">Verdeo</div>
+            <div class="plato">La Emilia</div>
+            <div class="plato">Cuatro quesos</div>
+
+            <div class="nota">
+                TODOS SALEN CON GUARNICIÓN.
+            </div>
+
+        </section>
+
+
+
+        <!-- PIZZANESAS -->
+
+        <section class="categoria">
+
+            <h2>PIZZANESAS (P/2)</h2>
+
+            <ul class="lista">
+
+                <li>Especial</li>
+                <li>Verdeo</li>
+                <li>Cuatro quesos</li>
+                <li>Napolitana</li>
+                <li>Capresse</li>
+                <li>Manjar (consultar)</li>
+
+            </ul>
+
+            <div class="nota">
+                TODAS SALEN CON PAPAS FRITAS.
+                <br>
+                MEDIAS O ENTERAS.
+            </div>
+
+        </section>
+
+
+
+        <!-- TARTAS -->
+
+        <section class="categoria">
+
+            <h2>TARTAS</h2>
+
+            <ul class="lista">
+
+                <li>Jamón y queso</li>
+                <li>Jamón, queso, tomate y huevo</li>
+                <li>Verdura y queso</li>
+                <li>Pollo y queso</li>
+                <li>Zapalitos (consultar)</li>
+
+            </ul>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- REPARTO -->
+
+    <section class="reparto">
+
+        <h2>REPARTIMOS EN</h2>
+
+        <p>
+            La Emilia · Barrio Nuevo · Villa Campi ·
+            Villa Riccio · Villa Canto
+        </p>
+
+    </section>
+
+
+
+    <!-- VOLVER -->
+
+    <a href="index.html" class="volver">
+        ← Volver a MANJARES
+    </a>
+
+
+
+    <!-- LOGO ON -->
+
+    <div class="separador"></div>
+
+    <img
+        src="logo_on_transparente.png"
+        alt="ON Soporte Informático"
+        class="logo-on"
+    >
+
+    <div class="pie">
+        SOLUCIONES DIGITALES · ON SOPORTE INFORMÁTICO
+    </div>
+
+
+</div>
+
+</body>
+</html>
