@@ -300,6 +300,15 @@
     const textoAlias = document.getElementById("alias-pago").textContent.trim();
     const estadoCopia = document.getElementById("estado-copia");
 
+    botonMediosPago.addEventListener("click", () => {
+        const abierto = botonMediosPago.getAttribute("aria-expanded") === "true";
+        botonMediosPago.setAttribute("aria-expanded", String(!abierto));
+        panelMediosPago.hidden = abierto;
+        if (!abierto) {
+            panelMediosPago.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+    });
+
     botonCopiar.addEventListener("click", async () => {
         try {
             if (navigator.clipboard && window.isSecureContext) {
@@ -325,11 +334,3 @@
 </script>
 </body>
 </html>
-    botonMediosPago.addEventListener("click", () => {
-        const abierto = botonMediosPago.getAttribute("aria-expanded") === "true";
-        botonMediosPago.setAttribute("aria-expanded", String(!abierto));
-        panelMediosPago.hidden = abierto;
-        if (!abierto) {
-            panelMediosPago.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        }
-    });
