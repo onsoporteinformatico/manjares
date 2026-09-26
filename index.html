@@ -100,6 +100,45 @@
             transform: translateY(-2px);
         }
 
+        /* MEDIOS DE PAGO */
+
+        .medios-pago {
+            margin-top: 18px;
+            padding: 20px;
+            border: 1px solid #d8d8d8;
+            border-radius: 12px;
+            background: #fafafa;
+            text-align: center;
+        }
+
+        .medios-pago h2 {
+            margin-bottom: 14px;
+            font-size: 15px;
+            letter-spacing: 1.5px;
+        }
+
+        .titular { color: #666666; font-size: 13px; margin-bottom: 6px; }
+        .alias { font-size: 17px; font-weight: 700; letter-spacing: 0.3px; }
+
+        .copiar-alias {
+            display: block;
+            width: 100%;
+            min-height: 48px;
+            margin-top: 14px;
+            padding: 12px 16px;
+            border: 1px solid #111111;
+            border-radius: 10px;
+            background: #111111;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .copiar-alias:hover { background: #ffffff; color: #111111; }
+        .estado-copia { min-height: 16px; margin-top: 9px; color: #555555; font-size: 12px; }
+
         .icono {
             position: absolute;
             left: 20px;
@@ -214,12 +253,20 @@
                 Cómo llegar
             </a>
 
-            <a href="#" class="boton">
+            <a href="#medios-pago" class="boton">
                 <span class="icono">▣</span>
-                Pagar con Mercado Pago
+                Medios de pago
             </a>
 
         </div>
+
+        <section class="medios-pago" id="medios-pago" aria-labelledby="titulo-medios-pago">
+            <h2 id="titulo-medios-pago">MEDIOS DE PAGO</h2>
+            <p class="titular">Titular: Andrea Dutrue</p>
+            <p class="alias" id="alias-pago">Cantina.manjares</p>
+            <button class="copiar-alias" id="copiar-alias" type="button">Copiar alias</button>
+            <p class="estado-copia" id="estado-copia" role="status" aria-live="polite"></p>
+        </section>
 
 
         <!-- PIE -->
@@ -242,6 +289,33 @@
 
     </div>
 
+<script>
+    const botonCopiar = document.getElementById("copiar-alias");
+    const textoAlias = document.getElementById("alias-pago").textContent.trim();
+    const estadoCopia = document.getElementById("estado-copia");
+
+    botonCopiar.addEventListener("click", async () => {
+        try {
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(textoAlias);
+            } else {
+                const campo = document.createElement("textarea");
+                campo.value = textoAlias;
+                campo.setAttribute("readonly", "");
+                campo.style.position = "fixed";
+                campo.style.opacity = "0";
+                document.body.appendChild(campo);
+                campo.select();
+                const copiado = document.execCommand("copy");
+                campo.remove();
+                if (!copiado) throw new Error("No se pudo copiar");
+            }
+            estadoCopia.textContent = "Alias copiado";
+            botonCopiar.textContent = "¡Alias copiado!";
+        } catch (error) {
+            estadoCopia.textContent = "No se pudo copiar automáticamente. Mantené presionado el alias para copiarlo.";
+        }
+    });
+</script>
 </body>
 </html>
-```
