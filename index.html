@@ -85,6 +85,8 @@
 
             color: #111111;
             text-decoration: none;
+            font-family: inherit;
+            cursor: pointer;
 
             font-size: 15px;
             font-weight: 600;
@@ -110,6 +112,8 @@
             background: #fafafa;
             text-align: center;
         }
+
+        .medios-pago[hidden] { display: none; }
 
         .medios-pago h2 {
             margin-bottom: 14px;
@@ -253,17 +257,17 @@
                 Cómo llegar
             </a>
 
-            <a href="#medios-pago" class="boton">
+            <button type="button" class="boton" id="abrir-medios-pago" aria-expanded="false" aria-controls="medios-pago">
                 <span class="icono">▣</span>
                 Medios de pago
-            </a>
+            </button>
 
         </div>
 
-        <section class="medios-pago" id="medios-pago" aria-labelledby="titulo-medios-pago">
+        <section class="medios-pago" id="medios-pago" aria-labelledby="titulo-medios-pago" hidden>
             <h2 id="titulo-medios-pago">MEDIOS DE PAGO</h2>
-            <p class="titular">Titular: Andrea Dutruel</p>
-            <p class="alias" id="alias-pago">cantina.manjares</p>
+            <p class="titular">Titular: Andrea Dutrue</p>
+            <p class="alias" id="alias-pago">Cantina.manjares</p>
             <button class="copiar-alias" id="copiar-alias" type="button">Copiar alias</button>
             <p class="estado-copia" id="estado-copia" role="status" aria-live="polite"></p>
         </section>
@@ -290,6 +294,8 @@
     </div>
 
 <script>
+    const botonMediosPago = document.getElementById("abrir-medios-pago");
+    const panelMediosPago = document.getElementById("medios-pago");
     const botonCopiar = document.getElementById("copiar-alias");
     const textoAlias = document.getElementById("alias-pago").textContent.trim();
     const estadoCopia = document.getElementById("estado-copia");
@@ -319,3 +325,11 @@
 </script>
 </body>
 </html>
+    botonMediosPago.addEventListener("click", () => {
+        const abierto = botonMediosPago.getAttribute("aria-expanded") === "true";
+        botonMediosPago.setAttribute("aria-expanded", String(!abierto));
+        panelMediosPago.hidden = abierto;
+        if (!abierto) {
+            panelMediosPago.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+    });
