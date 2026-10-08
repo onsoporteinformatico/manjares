@@ -1,12 +1,19 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>MANJARES | By Manjares Emilianos</title>
 
     <style>
+        :root {
+            --verde: #304719;
+            --marron: #985015;
+            --crema: #f5f0e4;
+            --papel: #fffdf8;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -15,9 +22,25 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #ffffff;
-            color: #111111;
+            background: var(--crema);
+            color: var(--verde);
             min-height: 100vh;
+            position: relative;
+            isolation: isolate;
+        }
+
+        /* FOTO DE FONDO */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background:
+                linear-gradient(
+                    rgba(245, 240, 228, 0.68),
+                    rgba(245, 240, 228, 0.78)
+                ),
+                url("FONDO1.jpeg") center center / cover no-repeat;
         }
 
         .contenedor {
@@ -27,28 +50,28 @@
             padding: 35px 22px 25px;
         }
 
-        /* LOGO PRINCIPAL */
-
+        /* LOGO MANJARES */
         .logo-manjares {
             display: block;
             width: 100%;
             max-width: 430px;
+            height: auto;
             margin: 0 auto 28px;
         }
 
         /* PRESENTACIÓN */
-
         .bienvenida {
             text-align: center;
+            color: var(--verde);
             font-size: 17px;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 3px;
             margin-top: 10px;
         }
 
         .frase {
             text-align: center;
-            color: #777777;
+            color: var(--marron);
             font-size: 13px;
             letter-spacing: 1.5px;
             margin-top: 10px;
@@ -57,12 +80,11 @@
         .linea {
             width: 55px;
             height: 2px;
-            background: #111111;
+            background: var(--marron);
             margin: 24px auto 30px;
         }
 
         /* BOTONES */
-
         .botones {
             display: flex;
             flex-direction: column;
@@ -71,58 +93,69 @@
 
         .boton {
             position: relative;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             min-height: 58px;
             padding: 15px 20px;
 
-            background: #ffffff;
-            border: 1px solid #d8d8d8;
+            background: rgba(255, 253, 248, 0.90);
+            border: 1px solid var(--verde);
             border-radius: 12px;
 
-            color: #111111;
+            color: var(--verde);
             text-decoration: none;
             font-family: inherit;
             cursor: pointer;
 
             font-size: 15px;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 0.5px;
 
             transition: all 0.25s ease;
         }
 
         .boton:hover {
-            background: #111111;
-            color: #ffffff;
-            border-color: #111111;
+            background: var(--verde);
+            color: var(--papel);
+            border-color: var(--verde);
             transform: translateY(-2px);
         }
 
         /* MEDIOS DE PAGO */
-
         .medios-pago {
             margin-top: 18px;
             padding: 20px;
-            border: 1px solid #d8d8d8;
+            border: 1px solid var(--verde);
             border-radius: 12px;
-            background: #fafafa;
+            background: rgba(255, 253, 248, 0.94);
             text-align: center;
         }
 
-        .medios-pago[hidden] { display: none; }
+        .medios-pago[hidden] {
+            display: none;
+        }
 
         .medios-pago h2 {
+            color: var(--verde);
             margin-bottom: 14px;
             font-size: 15px;
             letter-spacing: 1.5px;
         }
 
-        .titular { color: #666666; font-size: 13px; margin-bottom: 6px; }
-        .alias { font-size: 17px; font-weight: 700; letter-spacing: 0.3px; }
+        .titular {
+            color: #666666;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .alias {
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            color: var(--marron);
+            overflow-wrap: anywhere;
+        }
 
         .copiar-alias {
             display: block;
@@ -130,18 +163,27 @@
             min-height: 48px;
             margin-top: 14px;
             padding: 12px 16px;
-            border: 1px solid #111111;
+            border: 1px solid var(--verde);
             border-radius: 10px;
-            background: #111111;
-            color: #ffffff;
+            background: var(--verde);
+            color: white;
             font-size: 14px;
             font-weight: 700;
             cursor: pointer;
             transition: background 0.2s ease, color 0.2s ease;
         }
 
-        .copiar-alias:hover { background: #ffffff; color: #111111; }
-        .estado-copia { min-height: 16px; margin-top: 9px; color: #555555; font-size: 12px; }
+        .copiar-alias:hover {
+            background: var(--papel);
+            color: var(--verde);
+        }
+
+        .estado-copia {
+            min-height: 16px;
+            margin-top: 9px;
+            color: var(--verde);
+            font-size: 12px;
+        }
 
         .icono {
             position: absolute;
@@ -150,19 +192,17 @@
         }
 
         /* SEPARADOR */
-
         .separador {
             width: 100%;
             height: 1px;
-            background: #eeeeee;
+            background: #d8cbb4;
             margin: 38px 0 28px;
         }
 
         /* PIE */
-
         .pie-texto {
             text-align: center;
-            color: #999999;
+            color: var(--marron);
             font-size: 11px;
             letter-spacing: 1.5px;
             margin-bottom: 18px;
@@ -172,20 +212,19 @@
             display: block;
             width: 95px;
             max-width: 30%;
+            height: auto;
             margin: auto;
         }
 
         .copyright {
             text-align: center;
-            color: #b0b0b0;
+            color: var(--verde);
             font-size: 10px;
             margin-top: 12px;
         }
 
         /* CELULAR */
-
         @media (max-width: 400px) {
-
             .contenedor {
                 padding: 25px 18px 20px;
             }
@@ -202,26 +241,21 @@
                 min-height: 55px;
                 font-size: 14px;
             }
-
         }
     </style>
 </head>
 
 <body>
-
     <div class="contenedor">
 
-        <!-- LOGO MANJARES -->
-
+        <!-- LOGO MANJARES EN SVG -->
         <img
-            src="MANJARES.png"
+            src="MANJARES.svg"
             alt="MANJARES - By Manjares Emilianos"
             class="logo-manjares"
         >
 
-
         <!-- PRESENTACIÓN -->
-
         <div class="bienvenida">
             BIENVENIDOS
         </div>
@@ -232,9 +266,7 @@
 
         <div class="linea"></div>
 
-
-        <!-- BOTONES -->
-
+        <!-- BOTONES ORIGINALES -->
         <div class="botones">
 
             <a href="menu.html" class="boton">
@@ -242,39 +274,83 @@
                 Ver Menú
             </a>
 
-            <a href="https://www.instagram.com/cantinalaemilia_bymanjares" class="boton">
+            <a
+                href="https://www.instagram.com/cantinalaemilia_bymanjares"
+                class="boton"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
                 <span class="icono">◎</span>
                 Instagram
             </a>
 
-            <a href="https://wa.me/+5493364570013" class="boton">
+            <a
+                href="https://wa.me/+5493364570013"
+                class="boton"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
                 <span class="icono">◉</span>
                 WhatsApp
             </a>
 
-            <a href="https://maps.app.goo.gl/L8LSXvyCG2y7V8Ka7" class="boton">
+            <a
+                href="https://maps.app.goo.gl/L8LSXvyCG2y7V8Ka7"
+                class="boton"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
                 <span class="icono">⌖</span>
                 Cómo Llegar
             </a>
 
-            <button type="button" class="boton" id="abrir-medios-pago" aria-expanded="false" aria-controls="medios-pago">
+            <button
+                type="button"
+                class="boton"
+                id="abrir-medios-pago"
+                aria-expanded="false"
+                aria-controls="medios-pago"
+            >
                 <span class="icono">▣</span>
                 Medios de Pago
             </button>
 
         </div>
 
-        <section class="medios-pago" id="medios-pago" aria-labelledby="titulo-medios-pago" hidden>
-            <h2 id="titulo-medios-pago">Transferencia (Enviar Comprobante)</h2>
+        <!-- MEDIOS DE PAGO: SE CONSERVA LA FUNCIONALIDAD -->
+        <section
+            class="medios-pago"
+            id="medios-pago"
+            aria-labelledby="titulo-medios-pago"
+            hidden
+        >
+            <h2 id="titulo-medios-pago">
+                Transferencia (Enviar Comprobante)
+            </h2>
+
             <p class="titular">Titular: Andrea Dutruel</p>
-            <p class="alias" id="alias-pago">cantina.manjares</p>
-            <button class="copiar-alias" id="copiar-alias" type="button">Copiar Alias</button>
-            <p class="estado-copia" id="estado-copia" role="status" aria-live="polite"></p>
+
+            <p class="alias" id="alias-pago">
+                cantina.manjares
+            </p>
+
+            <button
+                class="copiar-alias"
+                id="copiar-alias"
+                type="button"
+            >
+                Copiar Alias
+            </button>
+
+            <p
+                class="estado-copia"
+                id="estado-copia"
+                role="status"
+                aria-live="polite"
+            ></p>
         </section>
 
-
         <!-- PIE -->
-
         <div class="separador"></div>
 
         <div class="pie-texto">
@@ -293,44 +369,71 @@
 
     </div>
 
-<script>
-    const botonMediosPago = document.getElementById("abrir-medios-pago");
-    const panelMediosPago = document.getElementById("medios-pago");
-    const botonCopiar = document.getElementById("copiar-alias");
-    const textoAlias = document.getElementById("alias-pago").textContent.trim();
-    const estadoCopia = document.getElementById("estado-copia");
+    <script>
+        const botonMediosPago =
+            document.getElementById("abrir-medios-pago");
 
-    botonMediosPago.addEventListener("click", () => {
-        const abierto = botonMediosPago.getAttribute("aria-expanded") === "true";
-        botonMediosPago.setAttribute("aria-expanded", String(!abierto));
-        panelMediosPago.hidden = abierto;
-        if (!abierto) {
-            panelMediosPago.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        }
-    });
+        const panelMediosPago =
+            document.getElementById("medios-pago");
 
-    botonCopiar.addEventListener("click", async () => {
-        try {
-            if (navigator.clipboard && window.isSecureContext) {
-                await navigator.clipboard.writeText(textoAlias);
-            } else {
-                const campo = document.createElement("textarea");
-                campo.value = textoAlias;
-                campo.setAttribute("readonly", "");
-                campo.style.position = "fixed";
-                campo.style.opacity = "0";
-                document.body.appendChild(campo);
-                campo.select();
-                const copiado = document.execCommand("copy");
-                campo.remove();
-                if (!copiado) throw new Error("No se pudo copiar");
+        const botonCopiar =
+            document.getElementById("copiar-alias");
+
+        const textoAlias =
+            document.getElementById("alias-pago").textContent.trim();
+
+        const estadoCopia =
+            document.getElementById("estado-copia");
+
+        botonMediosPago.addEventListener("click", () => {
+            const abierto =
+                botonMediosPago.getAttribute("aria-expanded") === "true";
+
+            botonMediosPago.setAttribute(
+                "aria-expanded",
+                String(!abierto)
+            );
+
+            panelMediosPago.hidden = abierto;
+
+            if (!abierto) {
+                panelMediosPago.scrollIntoView({
+                    behavior: "smooth",
+                    block: "nearest"
+                });
             }
-            estadoCopia.textContent = "Alias copiado";
-            botonCopiar.textContent = "¡Alias copiado!";
-        } catch (error) {
-            estadoCopia.textContent = "No se pudo copiar automáticamente. Mantené presionado el alias para copiarlo.";
-        }
-    });
-</script>
+        });
+
+        botonCopiar.addEventListener("click", async () => {
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(textoAlias);
+                } else {
+                    const campo = document.createElement("textarea");
+                    campo.value = textoAlias;
+                    campo.setAttribute("readonly", "");
+                    campo.style.position = "fixed";
+                    campo.style.opacity = "0";
+
+                    document.body.appendChild(campo);
+                    campo.select();
+
+                    const copiado = document.execCommand("copy");
+                    campo.remove();
+
+                    if (!copiado) {
+                        throw new Error("No se pudo copiar");
+                    }
+                }
+
+                estadoCopia.textContent = "Alias copiado";
+                botonCopiar.textContent = "¡Alias copiado!";
+            } catch (error) {
+                estadoCopia.textContent =
+                    "No se pudo copiar automáticamente. " +
+                    "Mantené presionado el alias para copiarlo.";
+            }
+        });
+    </script>
 </body>
 </html>
