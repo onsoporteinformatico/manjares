@@ -1,1 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menú | Cantina La Emilia</title>
+<style>
+:root{--verde:#294314;--naranja:#98500f;--crema:#f4efe3;--blanco:#fffefa;--texto:#354027;--linea:#d8d0bd}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--crema);color:var(--texto);font-family:Arial,Helvetica,sans-serif;line-height:1.35;position:relative;isolation:isolate}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(rgba(245,240,228,.68),rgba(245,240,228,.78)),url("FONDO2.jpeg") center center/100% auto no-repeat;pointer-events:none}
+.contenedor{max-width:1200px;margin:auto;padding:22px}.encabezado{text-align:center;padding:12px 10px 24px}.logo{display:block;width:min(100%,330px);height:auto;margin:0 auto 10px}.subtitulo{color:var(--naranja);font-family:Georgia,serif;font-size:clamp(28px,4vw,48px);letter-spacing:5px}.bajada{font-size:13px;letter-spacing:2px;color:var(--verde);margin-top:3px}
+.menu-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:stretch}.categoria{background:var(--blanco);border:2px solid var(--verde);border-radius:7px;padding:14px 13px;min-width:0}.categoria.naranja{border-color:var(--naranja)}.categoria h2{display:flex;align-items:center;gap:9px;color:var(--verde);font-family:Arial,sans-serif;font-size:clamp(16px,1.7vw,22px);line-height:1.15;margin-bottom:12px}.naranja h2{color:var(--naranja)}.estrella{width:36px;height:36px;flex:0 0 36px;display:grid;place-items:center;border-radius:50%;background:var(--verde);color:white;font-size:23px}.naranja .estrella{background:var(--naranja)}.subhead{color:var(--naranja);font-weight:bold;text-transform:uppercase;font-size:13px;margin:10px 0 4px;text-decoration:underline;text-underline-offset:3px}.lista{list-style:none}.lista li,.plato{display:flex;gap:8px;justify-content:space-between;align-items:flex-start;font-size:14px;padding:4px 0}.nombre{flex:1}.precio{white-space:nowrap;min-width:38px;color:var(--naranja);text-align:right}.detalle{font-size:11px;color:#74644f;margin:8px 0 0}.sandwich{margin:8px 0 12px}.sandwich-nombre{font-size:13px;font-weight:bold;color:var(--naranja);text-decoration:underline;text-underline-offset:3px;margin-bottom:3px}.sandwich .lista li{padding:1px 0}.nota{font-size:10px;color:#75664f;margin-top:10px;line-height:1.35}.dos-col{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.seccion-menor{margin-top:12px;padding-top:10px;border-top:2px solid var(--naranja)}.seccion-menor h3{font-size:17px;color:var(--naranja);margin-bottom:6px}.ancho-doble{grid-column:span 2}.inferior{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:0;margin-top:12px;background:var(--blanco);border:2px solid var(--verde);border-radius:7px;padding:12px}.inferior .categoria{border:0;border-radius:0;padding:4px 10px;background:transparent}.inferior .categoria+.categoria{border-left:2px solid var(--naranja)}.reparto{margin-top:12px;background:var(--verde);color:white;text-align:center;padding:14px;border-radius:5px;font-size:13px}.reparto strong{color:#f2d7a9}.pie{text-align:center;font-size:10px;color:#6f725f;letter-spacing:1px;margin:16px 0 4px}.logo-on{display:block;width:68px;height:auto;margin:12px auto 0}.nota-editable{font-size:11px;color:#6f725f;text-align:center;margin:10px auto 0}
+@media(max-width:850px){.menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.inferior{grid-template-columns:1fr 1fr}.inferior .categoria:last-child{grid-column:span 2;border-left:0;border-top:2px solid var(--naranja);margin-top:8px;padding-top:12px}.ancho-doble{grid-column:span 2}}
+@media(max-width:560px){
+  .contenedor{padding:10px 10px 24px}
+  .encabezado{padding:10px 4px 18px}
+  .logo{width:min(82%,300px)}
+  .subtitulo{font-size:38px;letter-spacing:4px}
+  .bajada{font-size:12px;line-height:1.5;letter-spacing:1.2px}
+  .menu-grid{grid-template-columns:minmax(0,1fr);gap:14px}
+  .ancho-doble{grid-column:auto}
+  .inferior{grid-template-columns:minmax(0,1fr);gap:0;padding:10px}
+  .inferior .categoria,.inferior .categoria+.categoria{border-left:0;border-top:2px solid var(--naranja);margin-top:8px;padding:16px 8px 8px}
+  .inferior .categoria:first-child{border-top:0;margin-top:0;padding-top:8px}
+  .inferior .categoria:last-child{grid-column:auto}
+  .categoria{padding:18px 16px;border-radius:10px;scroll-margin-top:10px}
+  .categoria h2{font-size:23px;line-height:1.2;margin-bottom:14px;gap:10px}
+  .estrella{width:40px;height:40px;flex-basis:40px;font-size:25px}
+  .lista li,.plato{font-size:18px;line-height:1.4;padding:7px 0;gap:10px}
+  .nombre{min-width:0}
+  .precio{font-size:17px;min-width:78px;letter-spacing:.2px;color:var(--naranja)}
+  .subhead{font-size:16px;margin-top:14px}
+  .sandwich{margin:12px 0 16px}
+  .sandwich-nombre{font-size:17px;margin-bottom:5px}
+  .detalle{font-size:14px;line-height:1.4}
+  .nota{font-size:13px;line-height:1.5;margin-top:12px}
+  .seccion-menor{margin-top:16px;padding-top:14px}
+  .seccion-menor h3{font-size:19px}
+  .dos-col{grid-template-columns:1fr;gap:0}
+  .reparto{font-size:15px;line-height:1.6;padding:18px 12px}
+  .pie{font-size:10px;line-height:1.5}
+  .logo-on{width:96px}
+}
 
+/* AJUSTES DE LECTURA Y PRECIOS: diseño mobile-first */
+.contenedor{max-width:1000px;padding:18px 16px 34px}
+.menu-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start}
+.categoria{padding:22px 20px;border-width:2px;border-radius:12px;box-shadow:0 3px 10px rgba(41,67,20,.07)}
+.categoria h2{font-size:clamp(22px,2vw,27px);line-height:1.2;margin-bottom:17px}
+.estrella{width:44px;height:44px;flex-basis:44px;font-size:28px}
+.lista li,.plato{font-size:18px;line-height:1.45;padding:8px 0;gap:12px}
+.precio{font-size:18px;min-width:94px;color:var(--naranja);font-weight:700;background:#fbf7ed;border:1px dashed #c7b89c;border-radius:5px;padding:2px 6px;text-align:center}
+.subhead{font-size:17px;margin:16px 0 7px}
+.sandwich-nombre{font-size:19px;margin-bottom:6px}
+.detalle{font-size:15px;line-height:1.5}
+.nota{font-size:14px;line-height:1.55}
+.seccion-menor h3{font-size:20px}
+.inferior{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:14px}
+.inferior .categoria{padding:16px 12px}
+.inferior .categoria h2{font-size:21px}
+.inferior .lista li{font-size:17px}
+.navegacion{position:sticky;top:0;z-index:10;background:var(--crema);padding:9px 0 12px;margin-bottom:12px;display:flex;gap:8px;overflow-x:auto}
+.navegacion a{flex:0 0 auto;color:var(--verde);background:var(--blanco);border:1px solid var(--verde);border-radius:999px;padding:9px 13px;text-decoration:none;font-size:14px;font-weight:700}
+.nota-editable{font-size:13px;line-height:1.5}
+@media(max-width:650px){
+ .contenedor{padding:8px 10px 26px}
+ .encabezado{padding:8px 4px 14px}
+ .logo{width:min(78%,270px)}
+ .subtitulo{font-size:42px;letter-spacing:4px}
+ .bajada{font-size:13px;letter-spacing:1px;line-height:1.5}
+ .menu-grid{grid-template-columns:minmax(0,1fr);gap:18px}
+ .categoria{padding:22px 18px;border-radius:12px;scroll-margin-top:72px}
+ .categoria h2{font-size:25px;margin-bottom:16px}
+ .estrella{width:44px;height:44px;flex-basis:44px;font-size:28px}
+ .lista li,.plato{font-size:20px;line-height:1.45;padding:9px 0;gap:10px}
+ .precio{font-size:19px;min-width:100px;padding:4px 7px}
+ .subhead{font-size:18px;margin-top:17px}
+ .sandwich-nombre{font-size:20px}
+ .detalle{font-size:16px}
+ .nota{font-size:15px}
+ .seccion-menor h3{font-size:21px}
+ .dos-col{grid-template-columns:1fr}
+ .inferior{grid-template-columns:minmax(0,1fr);gap:0;padding:10px}
+ .inferior .categoria,.inferior .categoria+.categoria{border-left:0;border-top:2px solid var(--naranja);margin-top:10px;padding:19px 8px 10px}
+ .inferior .categoria:first-child{border-top:0;margin-top:0;padding-top:10px}
+ .inferior .categoria:last-child{grid-column:auto}
+ .inferior .categoria h2{font-size:24px}
+ .inferior .lista li{font-size:19px}
+ .reparto{font-size:16px;line-height:1.6;padding:18px 12px}
+ .pie{font-size:11px;line-height:1.5}
+ .logo-on{width:96px}
+}
+@media(min-width:651px) and (max-width:900px){.menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.volver-inicio{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  margin:0 auto 14px;padding:10px 16px;border:1px solid var(--verde);
+  border-radius:999px;background:var(--blanco);color:var(--verde);
+  text-decoration:none;font-size:15px;font-weight:700;
+  box-shadow:0 2px 7px rgba(48,71,25,.08);
+}
+.volver-inicio:hover{background:var(--verde);color:#fff}
+</style></head><body><div class="contenedor">
+<div style="text-align:center"><a href="index.html" class="volver-inicio">← Volver al inicio</a></div>\n<header class="encabezado"><img src="MANJARES.svg" alt="Cantina La Emilia - By Manjares Emilianos" class="logo"><div class="subtitulo">MENÚ</div><div class="bajada">SUGERENCIA DEL DÍA · TRADICIÓN · SABOR · ENCUENTRO</div></header>
+<nav class="navegacion" aria-label="Ir a una categoría">
+<a href="#entradas">Entradas</a><a href="#sandwiches">Sandwiches</a><a href="#minutas">Minutas</a><a href="#pizzas">Pizzas</a><a href="#pastas">Pastas</a><a href="#platos">Platos</a><a href="#bebidas">Bebidas</a><a href="#postres">Postres</a>
+</nav>
+<main class="menu-grid">
+<section id="entradas" class="categoria"><h2><span class="estrella">✦</span> ENTRADAS</h2><ul class="lista"><li><span class="nombre">Empanadas</span><span class="precio" data-precio="empanadas">$ ____</span></li><li><span class="nombre">Papas fritas</span><span class="precio" data-precio="papas_fritas">$ ____</span></li><li><span class="nombre">Papas con cheddar</span><span class="precio" data-precio="papas_con_cheddar">$ ____</span></li><li><span class="nombre">Rabas</span><span class="precio" data-precio="rabas">$ ____</span></li><li><span class="nombre">Picada caliente</span><span class="precio" data-precio="picada_caliente">$ ____</span></li></ul><p class="nota">Milanesa picada, papas fritas, salchichas con salsa, bastoncitos de mozzarella, albóndigas, empanadas, patitas, aros de cebolla.</p><p class="nota"><b>COMEN 2, PICAN 3</b></p></section>
+<section id="sandwiches" class="categoria naranja"><h2><span class="estrella">✦</span> SANDWICHES</h2><div class="sandwich"><div class="sandwich-nombre">HAMBURGUESA</div><ul class="lista"><li><span class="nombre">Completa</span><span class="precio" data-precio="completa">$ ____</span></li><li><span class="nombre">Súper</span><span class="precio" data-precio="super">$ ____</span></li><li><span class="nombre">Manjar</span><span class="precio" data-precio="manjar">$ ____</span></li></ul></div><div class="sandwich"><div class="sandwich-nombre">LOMITO</div><ul class="lista"><li><span class="nombre">Completo</span><span class="precio" data-precio="completo">$ ____</span></li><li><span class="nombre">Súper</span><span class="precio" data-precio="super_2">$ ____</span></li><li><span class="nombre">Manjar</span><span class="precio" data-precio="manjar_2">$ ____</span></li></ul></div><div class="sandwich"><div class="sandwich-nombre">MILANESA</div><ul class="lista"><li><span class="nombre">Completo</span><span class="precio" data-precio="completo_2">$ ____</span></li><li><span class="nombre">Súper</span><span class="precio" data-precio="super_3">$ ____</span></li><li><span class="nombre">Manjar</span><span class="precio" data-precio="manjar_3">$ ____</span></li></ul></div><p class="nota"><b>COMPLETO:</b> jamón, queso, lechuga, tomate y papas.<br><b>SÚPER:</b> jamón, queso, lechuga, tomate, huevo y papas.<br><b>MANJAR:</b> cheddar, cebolla, panceta, barbacoa, huevo y papas.</p></section>
+<section id="minutas" class="categoria"><h2><span class="estrella">✦</span> MINUTAS</h2><ul class="lista"><li><span class="nombre">Milanesa con papas</span><span class="precio" data-precio="milanesa_con_papas">$ ____</span></li><li><span class="nombre">Milanesa napolitana con papas</span><span class="precio" data-precio="milanesa_napolitana_con_papas">$ ____</span></li><li><span class="nombre">Suprema con papas</span><span class="precio" data-precio="suprema_con_papas">$ ____</span></li><li><span class="nombre">Suprema napolitana con papas</span><span class="precio" data-precio="suprema_napolitana_con_papas">$ ____</span></li><li><span class="nombre">Tortilla de papas</span><span class="precio" data-precio="tortilla_de_papas">$ ____</span></li><li><span class="nombre">Omelette jamón y queso</span><span class="precio" data-precio="omelette_jamon_y_queso">$ ____</span></li><li><span class="nombre">Carlito tostado</span><span class="precio" data-precio="carlito_tostado">$ ____</span></li><li><span class="nombre">Carlito tostado de pollo</span><span class="precio" data-precio="carlito_tostado_de_pollo">$ ____</span></li></ul></section>
+<section id="pizzas" class="categoria"><h2><span class="estrella">✦</span> PIZZANESAS</h2><p class="detalle">CON PAPAS · MEDIA / ENTERA</p><ul class="lista"><li><span class="nombre">Especial</span><span class="precio" data-precio="especial">$ ____ / ____</span></li><li><span class="nombre">Verdeo</span><span class="precio" data-precio="verdeo">$ ____ / ____</span></li><li><span class="nombre">Napolitana</span><span class="precio" data-precio="napolitana">$ ____ / ____</span></li><li><span class="nombre">Cuatro quesos</span><span class="precio" data-precio="cuatro_quesos">$ ____ / ____</span></li><li><span class="nombre">Manjar</span><span class="precio" data-precio="manjar_4">$ ____ / ____</span></li></ul><div class="seccion-menor"><h2><span class="estrella">✦</span> PIZZAS</h2><p class="detalle">4 PORC. / 8 PORC.</p><ul class="lista"><li><span class="nombre">Muzzarella</span><span class="precio" data-precio="muzzarella">$ ____ / ____</span></li><li><span class="nombre">Especial</span><span class="precio" data-precio="especial_2">$ ____ / ____</span></li><li><span class="nombre">Napolitana</span><span class="precio" data-precio="napolitana_2">$ ____ / ____</span></li><li><span class="nombre">Palmitos</span><span class="precio" data-precio="palmitos">$ ____ / ____</span></li><li><span class="nombre">Rúcula</span><span class="precio" data-precio="rucula">$ ____ / ____</span></li><li><span class="nombre">Fugazza</span><span class="precio" data-precio="fugazza">$ ____ / ____</span></li><li><span class="nombre">Roquefort</span><span class="precio" data-precio="roquefort">$ ____ / ____</span></li><li><span class="nombre">Cuatro quesos</span><span class="precio" data-precio="cuatro_quesos_2">$ ____ / ____</span></li><li><span class="nombre">Pollo</span><span class="precio" data-precio="pollo">$ ____ / ____</span></li></ul></div></section>
+<section id="pastas" class="categoria naranja"><h2><span class="estrella">✦</span> PASTAS</h2><p class="detalle">SALEN CON FILETTO, CREMA O MIXTA</p><ul class="lista"><li><span class="nombre">Ravioles</span><span class="precio" data-precio="ravioles">$ ____</span></li><li><span class="nombre">Sorrentinos</span><span class="precio" data-precio="sorrentinos">$ ____</span></li><li><span class="nombre">Canelones</span><span class="precio" data-precio="canelones">$ ____</span></li><li><span class="nombre">Lasagna</span><span class="precio" data-precio="lasagna">$ ____</span></li><li><span class="nombre">Tallarines</span><span class="precio" data-precio="tallarines">$ ____</span></li><li><span class="nombre">Ñoquis</span><span class="precio" data-precio="noquis">$ ____</span></li></ul><div class="seccion-menor"><h3>SALSAS</h3><ul class="lista"><li><span class="nombre">Bolognesa</span><span class="precio" data-precio="bolognesa">$ ____</span></li><li><span class="nombre">Estofado</span><span class="precio" data-precio="estofado">$ ____</span></li><li><span class="nombre">4 quesos</span><span class="precio" data-precio="4_quesos">$ ____</span></li><li><span class="nombre">Parissiene</span><span class="precio" data-precio="parissiene">$ ____</span></li></ul></div><div class="seccion-menor"><h3>MENÚ KIDS</h3><p class="detalle">INCLUYE BEBIDA Y HELADO</p><ul class="lista"><li><span class="nombre">Hamburguesa con queso y papas</span><span class="precio" data-precio="hamburguesa_con_queso_y_papas">$ ____</span></li><li><span class="nombre">Patitas de pollo con papas</span><span class="precio" data-precio="patitas_de_pollo_con_papas">$ ____</span></li><li><span class="nombre">Milanesa con fideos</span><span class="precio" data-precio="milanesa_con_fideos">$ ____</span></li></ul></div></section>
+<section id="platos" class="categoria"><h2><span class="estrella">✦</span> PLATOS ELABORADOS</h2><div class="subhead">LOMOS</div><ul class="lista"><li><span class="nombre">Al champignon</span><span class="precio" data-precio="al_champignon">$ ____</span></li><li><span class="nombre">A la pimienta</span><span class="precio" data-precio="a_la_pimienta">$ ____</span></li><li><span class="nombre">A la Emilia</span><span class="precio" data-precio="a_la_emilia">$ ____</span></li></ul><div class="subhead">POLLOS</div><ul class="lista"><li><span class="nombre">Al champignon</span><span class="precio" data-precio="al_champignon_2">$ ____</span></li><li><span class="nombre">Al verdeo</span><span class="precio" data-precio="al_verdeo">$ ____</span></li><li><span class="nombre">A la Emilia</span><span class="precio" data-precio="a_la_emilia_2">$ ____</span></li><li><span class="nombre">A la brasilera</span><span class="precio" data-precio="a_la_brasilera">$ ____</span></li></ul><p class="nota">Todos salen con papas o puré.</p><div class="subhead">PESCADOS</div><ul class="lista"><li><span class="nombre">Merluza con puré</span><span class="precio" data-precio="merluza_con_pure">$ ____</span></li><li><span class="nombre">Calamares leonesa con papas</span><span class="precio" data-precio="calamares_leonesa_con_papas">$ ____</span></li><li><span class="nombre">Calamares Indianapolis con puré duquesa</span><span class="precio" data-precio="calamares_indianapolis_con_pure_duquesa">$ ____</span></li><li><span class="nombre">Langostinos al ajillo con puré</span><span class="precio" data-precio="langostinos_al_ajillo_con_pure">$ ____</span></li></ul></section>
+</main>
+<section id="bebidas" class="inferior">
+<div class="categoria"><h2><span class="estrella">✦</span> BEBIDAS SIN ALCOHOL</h2><ul class="lista"><li><span class="nombre">Gaseosa 500 ml</span><span class="precio" data-precio="gaseosa_500_ml">$ ____</span></li><li><span class="nombre">Gaseosa 1,5 l</span><span class="precio" data-precio="gaseosa_1_5_l">$ ____</span></li><li><span class="nombre">Agua 1,5 l</span><span class="precio" data-precio="agua_1_5_l">$ ____</span></li><li><span class="nombre">Agua saborizada 1,5 l</span><span class="precio" data-precio="agua_saborizada_1_5_l">$ ____</span></li></ul></div>
+<div class="categoria naranja" id="vinos"><h2><span class="estrella">✦</span> VINOS</h2>
+<ul class="lista">
+<li><span class="nombre">De la casa</span><span class="precio" data-precio="vino_de_la_casa">$ ____</span></li>
+<li><span class="nombre">Otro loco más</span><span class="precio" data-precio="otro_loco_mas">$ ____</span></li>
+<li><span class="nombre">Trumpeter</span><span class="precio" data-precio="trumpeter">$ ____</span></li>
+<li><span class="nombre">Cordero con piel</span><span class="precio" data-precio="cordero_con_piel">$ ____</span></li>
+<li><span class="nombre">Portillo</span><span class="precio" data-precio="portillo">$ ____</span></li>
+<li><span class="nombre">Santa Julia dulce</span><span class="precio" data-precio="santa_julia_dulce">$ ____</span></li>
+<li><span class="nombre">Vino 3/8</span><span class="precio" data-precio="vino_3_8">$ ____</span></li>
+</ul></div>
+
+<div class="categoria naranja"><h2><span class="estrella">✦</span> CERVEZAS</h2><ul class="lista"><li><span class="nombre">Brahma / Quilmes 1 l</span><span class="precio" data-precio="brahma_quilmes_1_l">$ ____</span></li><li><span class="nombre">Andes 1 l</span><span class="precio" data-precio="andes_1_l">$ ____</span></li><li><span class="nombre">Stella 1 l</span><span class="precio" data-precio="stella_1_l">$ ____</span></li><li><span class="nombre">Lata</span><span class="precio" data-precio="lata">$ ____</span></li><li><span class="nombre">Lata</span><span class="precio" data-precio="lata_2">$ ____</span></li></ul><div class="seccion-menor"><h2><span class="estrella">✦</span> POSTRES</h2><ul class="lista"><li><span class="nombre">Bombón suizo</span><span class="precio" data-precio="bombon_suizo">$ ____</span></li><li><span class="nombre">Bombón escocés</span><span class="precio" data-precio="bombon_escoces">$ ____</span></li><li><span class="nombre">Budín de pan</span><span class="precio" data-precio="budin_de_pan">$ ____</span></li><li><span class="nombre">Flan casero</span><span class="precio" data-precio="flan_casero">$ ____</span></li><li><span class="nombre">Postre flor de delicias</span><span class="precio" data-precio="postre_flor_de_delicias">$ ____</span></li></ul></div></div>
+<div class="categoria"><h2><span class="estrella">✦</span> APERITIVOS</h2><div class="dos-col"><ul class="lista"><li><span class="nombre">Fernet</span><span class="precio" data-precio="fernet">$ ____</span></li><li><span class="nombre">Gancia</span><span class="precio" data-precio="gancia">$ ____</span></li><li><span class="nombre">Campari</span><span class="precio" data-precio="campari">$ ____</span></li></ul><ul class="lista"><li><span class="nombre">Gin tonic</span><span class="precio" data-precio="gin_tonic">$ ____</span></li><li><span class="nombre">Cinzano</span><span class="precio" data-precio="cinzano">$ ____</span></li><li><span class="nombre">Whisky</span><span class="precio" data-precio="whisky">$ ____</span></li></ul></div><div class="seccion-menor"><h2><span class="estrella">✦</span> CAFETERÍA</h2><ul class="lista"><li><span class="nombre">Café</span><span class="precio" data-precio="cafe">$ ____</span></li><li><span class="nombre">Café jarrita</span><span class="precio" data-precio="cafe_jarrita">$ ____</span></li><li><span class="nombre">Cortado</span><span class="precio" data-precio="cortado">$ ____</span></li><li><span class="nombre">Lágrima</span><span class="precio" data-precio="lagrima">$ ____</span></li><li><span class="nombre">Café con leche</span><span class="precio" data-precio="cafe_con_leche">$ ____</span></li><li><span class="nombre">Té</span><span class="precio" data-precio="te">$ ____</span></li></ul></div></div>
+</section>
+<section class="reparto"><strong>RESERVAS Y DELIVERY · 3364570013</strong><br>Puerto Argentino 144 · La Emilia</section>
+<img src="LOGO_ON_verde_simbolo_texto_negro.svg" alt="ON Soporte Informático" class="logo-on"><div class="nota-editable">Para cambiar precios: abrí <b>menu.html</b>, buscá al final el bloque <b>PRECIOS DEL MENU — EDITAR SOLO ESTA PARTE</b> y modificá los valores entre comillas. No hace falta tocar el diseño.</div><div class="pie">SOLUCIONES DIGITALES · ON SOPORTE INFORMÁTICO</div>
+</div>
+<script>
+/*
+  INSTRUCCIONES PARA EDITAR PRECIOS (SOLO SE VEN EN EL CÓDIGO, NO EN LA PÁGINA)
+  Cambiá únicamente los valores entre comillas.
+  Ejemplo: "empanadas": "2500"
+  Para productos con dos tamaños: "especial": "5000 / 8500"
+*/
+const PRECIOS_MENU = {
+  "empanadas": "____", // Empanadas,
+  "papas_fritas": "____", // Papas fritas,
+  "papas_con_cheddar": "____", // Papas con cheddar,
+  "rabas": "____", // Rabas,
+  "picada_caliente": "____", // Picada caliente,
+  "completa": "____", // Completa,
+  "super": "____", // Súper,
+  "manjar": "____", // Manjar,
+  "completo": "____", // Completo,
+  "super_2": "____", // Súper,
+  "manjar_2": "____", // Manjar,
+  "completo_2": "____", // Completo,
+  "super_3": "____", // Súper,
+  "manjar_3": "____", // Manjar,
+  "milanesa_con_papas": "____", // Milanesa con papas,
+  "milanesa_napolitana_con_papas": "____", // Milanesa napolitana con papas,
+  "suprema_con_papas": "____", // Suprema con papas,
+  "suprema_napolitana_con_papas": "____", // Suprema napolitana con papas,
+  "tortilla_de_papas": "____", // Tortilla de papas,
+  "omelette_jamon_y_queso": "____", // Omelette jamón y queso,
+  "carlito_tostado": "____", // Carlito tostado,
+  "carlito_tostado_de_pollo": "____", // Carlito tostado de pollo,
+  "especial": "____ / ____", // Especial,
+  "verdeo": "____ / ____", // Verdeo,
+  "napolitana": "____ / ____", // Napolitana,
+  "cuatro_quesos": "____ / ____", // Cuatro quesos,
+  "manjar_4": "____ / ____", // Manjar,
+  "muzzarella": "____ / ____", // Muzzarella,
+  "especial_2": "____ / ____", // Especial,
+  "napolitana_2": "____ / ____", // Napolitana,
+  "palmitos": "____ / ____", // Palmitos,
+  "rucula": "____ / ____", // Rúcula,
+  "fugazza": "____ / ____", // Fugazza,
+  "roquefort": "____ / ____", // Roquefort,
+  "cuatro_quesos_2": "____ / ____", // Cuatro quesos,
+  "pollo": "____ / ____", // Pollo,
+  "ravioles": "____", // Ravioles,
+  "sorrentinos": "____", // Sorrentinos,
+  "canelones": "____", // Canelones,
+  "lasagna": "____", // Lasagna,
+  "tallarines": "____", // Tallarines,
+  "noquis": "____", // Ñoquis,
+  "bolognesa": "____", // Bolognesa,
+  "estofado": "____", // Estofado,
+  "4_quesos": "____", // 4 quesos,
+  "parissiene": "____", // Parissiene,
+  "hamburguesa_con_queso_y_papas": "____", // Hamburguesa con queso y papas,
+  "patitas_de_pollo_con_papas": "____", // Patitas de pollo con papas,
+  "milanesa_con_fideos": "____", // Milanesa con fideos,
+  "al_champignon": "____", // Al champignon,
+  "a_la_pimienta": "____", // A la pimienta,
+  "a_la_emilia": "____", // A la Emilia,
+  "al_champignon_2": "____", // Al champignon,
+  "al_verdeo": "____", // Al verdeo,
+  "a_la_emilia_2": "____", // A la Emilia,
+  "a_la_brasilera": "____", // A la brasilera,
+  "merluza_con_pure": "____", // Merluza con puré,
+  "calamares_leonesa_con_papas": "____", // Calamares leonesa con papas,
+  "calamares_indianapolis_con_pure_duquesa": "____", // Calamares Indianapolis con puré duquesa,
+  "langostinos_al_ajillo_con_pure": "____", // Langostinos al ajillo con puré,
+  "gaseosa_500_ml": "____", // Gaseosa 500 ml,
+  "gaseosa_1_5_l": "____", // Gaseosa 1,5 l,
+  "agua_1_5_l": "____", // Agua 1,5 l,
+  "agua_saborizada_1_5_l": "____", // Agua saborizada 1,5 l,
+  "brahma_quilmes_1_l": "____", // Brahma / Quilmes 1 l,
+  "andes_1_l": "____", // Andes 1 l,
+  "stella_1_l": "____", // Stella 1 l,
+  "lata": "____", // Lata,
+  "lata_2": "____", // Lata,
+  "bombon_suizo": "____", // Bombón suizo,
+  "bombon_escoces": "____", // Bombón escocés,
+  "budin_de_pan": "____", // Budín de pan,
+  "flan_casero": "____", // Flan casero,
+  "postre_flor_de_delicias": "____", // Postre flor de delicias,
+  "fernet": "____", // Fernet,
+  "gancia": "____", // Gancia,
+  "campari": "____", // Campari,
+  "gin_tonic": "____", // Gin tonic,
+  "cinzano": "____", // Cinzano,
+  "whisky": "____", // Whisky,
+  "cafe": "____", // Café,
+  "cafe_jarrita": "____", // Café jarrita,
+  "cortado": "____", // Cortado,
+  "lagrima": "____", // Lágrima,
+  "cafe_con_leche": "____", // Café con leche,
+  "te": "____", // Té
+};
+
+document.querySelectorAll("[data-precio]").forEach(elemento => {
+  const clave = elemento.dataset.precio;
+  const valor = PRECIOS_MENU[clave] ?? "____";
+  elemento.textContent = "$ " + valor;
+});
+</script>
+
+</body></html>
